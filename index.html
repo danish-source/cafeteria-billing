@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cafeteria Billing System</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header-with-cover">
+            <div class="header-cover">
+                <div class="header-content">
+                    <img src="RKDF-LOGO.png" alt="RKDF Logo" class="logo">
+                    <div class="header-text">
+                        <h1>🍽️ RKDF Cafeteria Billing System</h1>
+                        <p>Quick & Easy Order Management</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Menu Section -->
+            <section class="menu-section">
+                <h2>📋 Menu</h2>
+                
+                <!-- Category Navigation -->
+                <div class="category-nav">
+                    <button class="category-btn active" data-category="all" onclick="filterMenu('all')">All Items</button>
+                    <button class="category-btn" data-category="lunch" onclick="filterMenu('lunch')">🍽️ Lunch</button>
+                    <button class="category-btn" data-category="drinks" onclick="filterMenu('drinks')">🥤 Drinks</button>
+                    <button class="category-btn" data-category="snacks" onclick="filterMenu('snacks')">🍿 Snacks</button>
+                    <button class="category-btn" data-category="chinese" onclick="filterMenu('chinese')">🥢 Chinese</button>
+                    <button class="category-btn" data-category="beverages" onclick="filterMenu('beverages')">☕ Beverages</button>
+                </div>
+                
+                <div class="menu-grid" id="menuGrid">
+                    <!-- Menu items will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Cart Section -->
+            <section class="cart-section">
+                <h2>🛒 Your Order</h2>
+                <div class="cart-container">
+                    <div class="cart-items" id="cartItems">
+                        <p class="empty-cart">Your cart is empty</p>
+                    </div>
+                    
+                    <div class="cart-summary" id="cartSummary" style="display: none;">
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">₹0.00</span>
+                        </div>
+                        <div class="summary-row" id="discountRow" style="display: none;">
+                            <span>Discount (10%):</span>
+                            <span id="discount">-₹0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>GST (5%):</span>
+                            <span id="gst">₹0.00</span>
+                        </div>
+                        <div class="summary-row total-row">
+                            <span>Total:</span>
+                            <span id="total">₹0.00</span>
+                        </div>
+                    </div>
+
+                    <div class="cart-actions">
+                        <button class="btn btn-secondary" id="resetBtn" onclick="resetCart()">Reset Cart</button>
+                        <button class="btn btn-primary" id="generateReceiptBtn" onclick="generateReceipt()" disabled>Generate Receipt</button>
+                        <button class="btn btn-analytics" onclick="showAnalyticsDashboard()">📊 Analytics</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Admin Section -->
+            <section class="admin-section">
+                <h2>🛠️ Admin Panel - Add Menu Item</h2>
+                <form id="adminAddItemForm" class="admin-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="adminItemName">Item Name</label>
+                            <input type="text" id="adminItemName" required placeholder="e.g. Paneer Tikka">
+                        </div>
+                        <div class="form-group">
+                            <label for="adminItemPrice">Price (₹)</label>
+                            <input type="number" id="adminItemPrice" required min="1" step="1" placeholder="e.g. 120">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="adminItemCategory">Category</label>
+                            <select id="adminItemCategory" required>
+                                <option value="">Select category</option>
+                                <option value="lunch">Lunch</option>
+                                <option value="drinks">Drinks</option>
+                                <option value="snacks">Snacks</option>
+                                <option value="chinese">Chinese</option>
+                                <option value="beverages">Beverages</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="adminItemImage">Photo</label>
+                            <input type="file" id="adminItemImage" accept="image/*">
+                            <small>Optional. Used only for this browser session.</small>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adminItemDescription">Description</label>
+                        <textarea id="adminItemDescription" rows="2" placeholder="Short description of the item"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Add Item to Menu</button>
+                </form>
+            </section>
+        </div>
+
+        <!-- Receipt Modal -->
+        <div class="modal" id="receiptModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>📄 Receipt</h2>
+                    <span class="close" onclick="closeReceipt()">&times;</span>
+                </div>
+                <div class="receipt-content" id="receiptContent">
+                    <!-- Receipt content will be populated by JavaScript -->
+                </div>
+                <div class="modal-actions">
+                    <button class="btn btn-secondary" onclick="closeReceipt()">Close</button>
+                    <button class="btn btn-primary" onclick="downloadPDF()">Download PDF</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analytics Modal -->
+        <div class="modal" id="analyticsModal">
+            <div class="modal-content analytics-modal">
+                <div class="modal-header">
+                    <h2>📊 Order Analytics & History</h2>
+                    <span class="close" onclick="closeAnalytics()">&times;</span>
+                </div>
+                <div class="analytics-content">
+                    <div class="analytics-stats">
+                        <div class="stat-card">
+                            <h3>💰 Total Revenue</h3>
+                            <p class="stat-value" id="totalRevenue">₹0.00</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>📦 Total Orders</h3>
+                            <p class="stat-value" id="totalOrders">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>📈 Average Order</h3>
+                            <p class="stat-value" id="averageOrder">₹0.00</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>📅 Today's Revenue</h3>
+                            <p class="stat-value" id="todayRevenue">₹0.00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="recent-orders">
+                        <h3>📋 Recent Orders</h3>
+                        <div id="recentOrdersList">
+                            <p class="no-orders">No orders yet</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="analytics-actions">
+                    <button class="btn btn-secondary" onclick="exportAnalytics()">📤 Export Data</button>
+                    <button class="btn btn-danger" onclick="clearAnalytics()">🗑️ Clear History</button>
+                    <button class="btn btn-primary" onclick="closeAnalytics()">Close</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🍽️ RKDF Cafeteria</h3>
+                    <p>Quick & Easy Order Management System</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>📧 info@rkdfcafeteria.com</p>
+                    <p>📞 +91 12345 67890</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <p>📋 Menu</p>
+                    <p>🛒 Cart</p>
+                    <p>📄 Receipt</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RKDF Cafeteria. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
