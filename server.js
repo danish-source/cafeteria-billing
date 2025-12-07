@@ -10,7 +10,16 @@ app.use(express.json());
 
 // Serve frontend files (index.html, styles.css, script.js, images) from this folder
 const publicDir = path.join(__dirname);
-app.use(express.static(publicDir));
+app.use(express.static(publicDir, {
+  // Ensure images are served with correct MIME types
+  setHeaders: (res, filePath) => {
+    if (filePath.endsWith('.jpg') || filePath.endsWith('.jpeg')) {
+      res.setHeader('Content-Type', 'image/jpeg');
+    } else if (filePath.endsWith('.png')) {
+      res.setHeader('Content-Type', 'image/png');
+    }
+  }
+}));
 
 // --- PostgreSQL database setup ---
 // Render automatically provides DATABASE_URL environment variable for PostgreSQL

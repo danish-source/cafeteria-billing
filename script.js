@@ -7,7 +7,7 @@ const menuItems = [
         price: 180,
         description: "Fragrant basmati rice with tender chicken",
         category: "lunch",
-        image: "Chicken-Biryani.jpg"
+        image: "chicken-biryani.jpg"
     },
     {
         id: 2,
@@ -15,7 +15,7 @@ const menuItems = [
         price: 120,
         description: "Aromatic rice with mixed vegetables",
         category: "lunch",
-        image: "Veg-Biryani.jpg"
+        image: "veg-biryani.jpg"
     },
     {
         id: 3,
@@ -23,7 +23,7 @@ const menuItems = [
         price: 200,
         description: "Creamy tomato curry with tender chicken",
         category: "lunch",
-        image: "Butter-Chicken.jpg"
+        image: "butter-chicken.jpg"
     },
     {
         id: 4,
@@ -31,7 +31,7 @@ const menuItems = [
         price: 80,
         description: "Rich black lentils in creamy sauce",
         category: "lunch",
-        image: "Dal-Makhani.jpg"
+        image: "dal-makhani.jpg"
     },
     {
         id: 5,
@@ -39,7 +39,7 @@ const menuItems = [
         price: 140,
         description: "Cottage cheese in creamy tomato sauce",
         category: "lunch",
-        image: "Paneer-Butter-Masala.jpg"
+        image: "paneer-butter-masala.jpg"
     },
     {
         id: 6,
@@ -47,7 +47,7 @@ const menuItems = [
         price: 150,
         description: "Spicy chicken in onion-tomato gravy",
         category: "lunch",
-        image: "Chicken-Curry.jpg"
+        image: "chicken-curry.jpg"
     },
     
     // Drinks (6 items)
@@ -57,7 +57,7 @@ const menuItems = [
         price: 40,
         description: "Refreshing yogurt drink",
         category: "drinks",
-        image: "Lassi.jpg"
+        image: "lassi.jpg"
     },
     {
         id: 8,
@@ -65,7 +65,7 @@ const menuItems = [
         price: 25,
         description: "Fresh lemon water with salt and sugar",
         category: "drinks",
-        image: "Nimbu-Pani.jpg"
+        image: "nimbu-pani.jpg"
     },
     {
         id: 9,
@@ -73,7 +73,7 @@ const menuItems = [
         price: 30,
         description: "Refreshing lemon-lime soda",
         category: "drinks",
-        image: "Sprite.jpg"
+        image: "sprite.jpg"
     },
     {
         id: 10,
@@ -81,7 +81,7 @@ const menuItems = [
         price: 45,
         description: "Fresh mango juice",
         category: "drinks",
-        image: "Mango-Juice.jpg"
+        image: "mango-juice.jpg"
     },
     {
         id: 11,
@@ -89,7 +89,7 @@ const menuItems = [
         price: 15,
         description: "Pure mineral water bottle",
         category: "drinks",
-        image: "Mineral-Water.jpg"
+        image: "mineral-water.jpg"
     },
     {
         id: 12,
@@ -97,7 +97,7 @@ const menuItems = [
         price: 30,
         description: "Classic cola drink",
         category: "drinks",
-        image: "Coca-Cola.jpg"
+        image: "coca-cola.jpg"
     },
     
     // Snacks (6 items)
@@ -107,7 +107,7 @@ const menuItems = [
         price: 20,
         description: "Crispy fried pastry with spiced filling",
         category: "snacks",
-        image: "Samosa.jpg"
+        image: "samosa.jpg"
     },
     {
         id: 14,
@@ -115,7 +115,7 @@ const menuItems = [
         price: 35,
         description: "Deep-fried vegetable fritters",
         category: "snacks",
-        image: "Pakora.jpg"
+        image: "pakora.jpg"
     },
     {
         id: 15,
@@ -123,7 +123,7 @@ const menuItems = [
         price: 25,
         description: "Spicy potato fritter in bread",
         category: "snacks",
-        image: "Vada-Pav.jpg"
+        image: "vada-pav.jpg"
     },
     {
         id: 16,
@@ -131,7 +131,7 @@ const menuItems = [
         price: 30,
         description: "Tangy puffed rice snack",
         category: "snacks",
-        image: "Bhel-Puri.jpg"
+        image: "bhel-puri.jpg"
     },
     {
         id: 17,
@@ -139,7 +139,7 @@ const menuItems = [
         price: 40,
         description: "Golden crispy potato fries",
         category: "snacks",
-        image: "French-Fries.jpg"
+        image: "french-fries.jpg"
     },
     {
         id: 18,
@@ -147,7 +147,7 @@ const menuItems = [
         price: 80,
         description: "Spiced vegetable curry with bread",
         category: "snacks",
-        image: "Pav-Bhaji.jpg"
+        image: "pav-bhaji.jpg"
     },
     
     // Chinese (6 items)
@@ -157,7 +157,7 @@ const menuItems = [
         price: 120,
         description: "Stir-fried rice with chicken and vegetables",
         category: "chinese",
-        image: "Chicken-Fried-Rice.jpg"
+        image: "chicken-fried-rice.jpg"
     },
     {
         id: 20,
@@ -165,7 +165,7 @@ const menuItems = [
         price: 90,
         description: "Stir-fried noodles with mixed vegetables",
         category: "chinese",
-        image: "Veg-Noodles.jpg"
+        image: "veg-noodles.jpg"
     },
     {
         id: 21,
@@ -173,7 +173,7 @@ const menuItems = [
         price: 150,
         description: "Spicy chicken balls in tangy sauce",
         category: "chinese",
-        image: "Chicken-Manchurian.jpg"
+        image: "chicken-manchurian.jpg"
     },
     {
         id: 22,
@@ -181,7 +181,7 @@ const menuItems = [
         price: 40,
         description: "Crispy vegetable spring rolls",
         category: "chinese",
-        image: "Spring-Roll.jpg"
+        image: "spring-roll.jpg"
     },
     {
         id: 23,
@@ -189,7 +189,7 @@ const menuItems = [
         price: 80,
         description: "Steamed chicken dumplings",
         category: "chinese",
-        image: "Chicken-Momos.jpg"
+        image: "chicken-momos.jpg"
     },
     {
         id: 24,
@@ -197,7 +197,7 @@ const menuItems = [
         price: 120,
         description: "Spicy vegetable balls in tangy sauce",
         category: "chinese",
-        image: "Veg-Manchurian.jpg"
+        image: "veg-manchurian.jpg"
     },
     
     // Beverages (6 items)
@@ -207,7 +207,7 @@ const menuItems = [
         price: 15,
         description: "Traditional Indian spiced tea",
         category: "beverages",
-        image: "Chai.jpg"
+        image: "chai.jpg"
     },
     {
         id: 26,
@@ -215,7 +215,7 @@ const menuItems = [
         price: 25,
         description: "Freshly brewed coffee",
         category: "beverages",
-        image: "Coffee.jpg"
+        image: "coffee.jpg"
     },
     {
         id: 27,
@@ -223,7 +223,7 @@ const menuItems = [
         price: 20,
         description: "Healthy green tea",
         category: "beverages",
-        image: "Green-Tea.jpg"
+        image: "green-tea.jpg"
     },
     {
         id: 28,
@@ -231,7 +231,7 @@ const menuItems = [
         price: 35,
         description: "Rich hot chocolate drink",
         category: "beverages",
-        image: "Hot-Chocolate.jpg"
+        image: "hot-chocolate.jpg"
     },
     {
         id: 29,
@@ -239,7 +239,7 @@ const menuItems = [
         price: 20,
         description: "Spiced tea with ginger and cardamom",
         category: "beverages",
-        image: "Masala-Chai.jpg"
+        image: "masala-chai.jpg"
     },
     {
         id: 30,
@@ -247,7 +247,7 @@ const menuItems = [
         price: 35,
         description: "Refreshing iced tea with lemon",
         category: "beverages",
-        image: "Iced-Tea.jpg"
+        image: "iced-tea.jpg"
     },
     
 ];
