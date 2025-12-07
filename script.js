@@ -899,7 +899,7 @@ function saveOrderToHistory() {
 
     // Also send order to backend (simple JSON file storage)
     try {
-        fetch('http://localhost:3000/save-order', {
+        fetch('/save-order', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
